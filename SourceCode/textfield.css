@@ -1,0 +1,17 @@
+.text-field {
+	-fx-font-family: "Helvetica";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: rgb(40, 40, 43);
+}
+.text-area {
+	-fx-font-family: "Helvetica";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: rgb(40, 40, 43);
+}
+.text-area .content {
+    -fx-background-color: rgb(40, 40, 43) ;
+}

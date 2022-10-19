@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="800.0" prefWidth="850.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameController">
+   <children>
+      <TextArea fx:id="tf" maxHeight="150.0" maxWidth="240.0" prefHeight="150.0" prefWidth="240.0" promptText="Send message" stylesheets="@textfield.css" wrapText="true">
+         <StackPane.margin>
+            <Insets right="-600.0" top="600.0" />
+         </StackPane.margin>
+         <font>
+            <Font name="Candara Light" size="20.0" />
+         </font>
+      </TextArea>
+      <ScrollPane fx:id="sp" maxHeight="600.0" maxWidth="250.0" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: rgb(53, 57, 53);">
+         <StackPane.margin>
+            <Insets right="-600.0" top="-160.0" />
+         </StackPane.margin>
+         <content>
+            <VBox fx:id="vbox" prefHeight="580.0" prefWidth="240.0" style="-fx-background-color: rgb(53, 57, 53);" />
+         </content>
+      </ScrollPane>
+      <Label fx:id="turn" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="85.0" prefWidth="594.0" text="TURN">
+         <font>
+            <Font name="Serif Regular" size="60.0" />
+         </font>
+         <StackPane.margin>
+            <Insets right="248.0" top="-700.0" />
+         </StackPane.margin>
+      </Label>
+      <Label fx:id="losses" alignment="CENTER" contentDisplay="CENTER" layoutX="446.0" layoutY="711.0" prefHeight="49.0" prefWidth="128.0" text="0" textAlignment="CENTER" textFill="#ab0d00">
+         <font>
+            <Font size="33.0" />
+         </font>
+         <StackPane.margin>
+            <Insets right="-150.0" top="730.0" />
+         </StackPane.margin>
+      </Label>
+      <Label fx:id="wins" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="96.0" text="0" textAlignment="CENTER" textFill="#00ab33">
+         <font>
+            <Font size="33.0" />
+         </font>
+         <StackPane.margin>
+            <Insets right="650.0" top="730.0" />
+         </StackPane.margin>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="711.0" prefHeight="49.0" prefWidth="128.0" text="LOSSES" textAlignment="CENTER" textFill="#ab0d00">
+         <font>
+            <Font size="33.0" />
+         </font>
+         <StackPane.margin>
+            <Insets right="-150.0" top="650.0" />
+         </StackPane.margin>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="96.0" text="WINS" textAlignment="CENTER" textFill="#00ab33">
+         <StackPane.margin>
+            <Insets right="650.0" top="650.0" />
+         </StackPane.margin>
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
+      <Label fx:id="label1" alignment="CENTER" contentDisplay="CENTER" disable="true" prefHeight="85.0" prefWidth="600.0" text="SAMPLE" visible="false" StackPane.alignment="TOP_CENTER">
+         <StackPane.margin>
+            <Insets right="250.0" top="100.0" />
+         </StackPane.margin>
+         <font>
+            <Font name="Serif Regular" size="94.0" />
+         </font>
+      </Label>
+      <Label fx:id="label2" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="126.0" layoutY="110.0" onMouseClicked="#onMouseClickedLabel" onMouseEntered="#onMouseEnteredLabel" onMouseExited="#onMouseExitLabel" prefHeight="85.0" prefWidth="368.0" text="REMATCH" visible="false" StackPane.alignment="TOP_CENTER">
+         <font>
+            <Font name="Serif Regular" size="50.0" />
+         </font>
+         <StackPane.margin>
+            <Insets right="250.0" top="250.0" />
+         </StackPane.margin>
+      </Label>
+      <Label fx:id="label3" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="126.0" layoutY="268.0" onMouseClicked="#leave" onMouseEntered="#onMouseEnteredLabel" onMouseExited="#onMouseExitLabel" prefHeight="85.0" prefWidth="368.0" text="LEAVE" visible="false" StackPane.alignment="TOP_CENTER">
+         <font>
+            <Font name="Serif Regular" size="50.0" />
+         </font>
+         <StackPane.margin>
+            <Insets right="250.0" top="380.0" />
+         </StackPane.margin>
+      </Label>
+      <GridPane fx:id="gp" alignment="CENTER" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane fx:id="inner" onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="inner" layoutX="10.0" layoutY="10.0" onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="inner" layoutX="210.0" layoutY="10.0" onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="inner" layoutX="410.0" layoutY="10.0" onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="inner" layoutX="10.0" layoutY="210.0" onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="inner" layoutX="210.0" layoutY="210.0" onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="inner" layoutX="410.0" layoutY="210.0" onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="inner" layoutX="10.0" layoutY="410.0" onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="inner" layoutX="210.0" layoutY="410.0" onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </children>
+         <StackPane.margin>
+            <Insets right="248.0" />
+         </StackPane.margin>
+      </GridPane>
+   </children>
+</StackPane>

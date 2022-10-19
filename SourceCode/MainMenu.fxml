@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenuController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: grey;">
+         <children>
+            <Button fx:id="host" layoutX="133.0" layoutY="271.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="121.0" stylesheets="@button.css" text="Host" />
+            <Label alignment="CENTER" layoutX="154.0" layoutY="116.0" prefHeight="27.0" prefWidth="79.0" stylesheets="@label.css" text="Address" />
+            <Label alignment="CENTER" layoutX="157.0" layoutY="173.0" prefHeight="27.0" prefWidth="73.0" stylesheets="@label.css" text="Port" />
+            <TextField fx:id="address" layoutX="316.0" layoutY="110.0" prefHeight="39.0" prefWidth="149.0" stylesheets="@textfield.css" />
+            <TextField fx:id="port" layoutX="316.0" layoutY="167.0" prefHeight="39.0" prefWidth="149.0" stylesheets="@textfield.css" />
+            <Button fx:id="join" layoutX="330.0" layoutY="271.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="121.0" stylesheets="@button.css" text="Join" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
