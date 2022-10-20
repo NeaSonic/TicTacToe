@@ -6,7 +6,7 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 
 
-//same as utils but for chat, other class was getting too big and i cba to sort through it again xDD
+//same as utils but for chat
 
 public class Chat {
 	
