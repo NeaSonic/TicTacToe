@@ -216,4 +216,17 @@ public class Utils {
 	      sleeper.setOnSucceeded(event -> continuation.run());
 	      new Thread(sleeper).start();
 	    }
+    public static void closeEverything() {
+    	try {
+			br.close();
+			bw.close();
+			s.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    public static Socket getSocket() {
+    	return s;
+    }
 }

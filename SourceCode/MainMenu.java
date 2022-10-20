@@ -18,8 +18,12 @@ public class MainMenu extends Application {
 	}
 	@Override
 	public void stop() {
-		if (Utils.checkConnection())
+		if (Utils.checkConnection()) {
 			Utils.sendResponse("opponentleft");
+			Utils.closeEverything();
+			Chat.closeEverything();
+		}
+		
 	}
 	
 	

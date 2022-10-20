@@ -169,6 +169,8 @@ public class GameController implements Initializable{
 		Utils.changeScene("MainMenu.fxml", e);
 		
 		Utils.sendResponse("opponentleft");
+		Chat.closeEverything();
+		Utils.closeEverything();
 		
 	}
 	
@@ -307,6 +309,7 @@ public class GameController implements Initializable{
     		
     	//opponent left
     	case 12:
+
     		Platform.runLater(new Runnable() {
 				@Override
 				public void run() {

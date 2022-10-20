@@ -9,11 +9,13 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class MainMenuController implements Initializable{
@@ -25,7 +27,12 @@ public class MainMenuController implements Initializable{
 	private Button join;
 	@FXML
 	private Button host;
-	
+	@FXML
+	private Label connecting;
+	@FXML
+	private Button cancel;
+	private Thread thread;
+	private ServerSocket ss;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -37,23 +44,71 @@ public class MainMenuController implements Initializable{
 					p = Integer.parseInt(port.getText());
 					if (p>65535 || p<0)
 						throw new NumberFormatException();
-					ServerSocket ss = new ServerSocket(p);
+					ss = new ServerSocket(p);
 					ss.setSoTimeout(30000);
-					Utils.setSocket(ss.accept());
-					Chat.setSocket(ss.accept());
-					ss.close();
-					Utils.setPlayer("X");
-					Utils.setOpponent("O");
-					Utils.changeScene("Game.fxml", event);
+				    thread = new Thread(new Runnable() {
+						@Override
+						public void run() {
+							try {
+								Utils.setSocket(ss.accept());
+								Chat.setSocket(ss.accept());
+								ss.close();
+							}catch (SocketTimeoutException e) {
+								try {
+									ss.close();
+								} catch (IOException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+								Platform.runLater(new Runnable() {
+
+									@Override
+									public void run() {
+										Utils.showError("Unable to establish connection", "Connection Timeout");
+										   host.setDisable(false);
+										   join.setDisable(false);
+										   connecting.setVisible(false);
+										   connecting.setDisable(true);
+										   cancel.setDisable(true);
+										   cancel.setVisible(false);
 										
+									}
+									
+								});
+								   e.printStackTrace();
+							}catch (IOException e) {
+								e.printStackTrace();
+							}
+							if (Utils.getSocket()!=null) 
+							Platform.runLater(new Runnable() {
+
+								@Override
+								public void run() {
+									Utils.setPlayer("X");
+									Utils.setOpponent("O");
+									try {
+										Utils.changeScene("Game.fxml", event);
+									} catch (IOException e) {
+										e.printStackTrace();
+									}
+									
+								}
+								
+							});
+							}	
+								
+					});
+					thread.start();
+					host.setDisable(true);
+					join.setDisable(true);
+					connecting.setVisible(true);
+					connecting.setDisable(false);
+					cancel.setDisable(false);
+					cancel.setVisible(true);
 				}
 				catch (NumberFormatException e) {
 					Utils.showError("Input not valid", "Please input a port number between 0 and 65535");
 					e.printStackTrace();
-				}
-			    catch (SocketTimeoutException e) {
-				   Utils.showError("Unable to establish connection", "Connection Timeout");
-				   e.printStackTrace();
 			    } catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -93,6 +148,25 @@ public class MainMenuController implements Initializable{
 					e.printStackTrace();
 				}
 				
+			}
+			
+		});
+		cancel.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				try {
+					ss.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				host.setDisable(false);
+				join.setDisable(false);
+				connecting.setVisible(false);
+		        connecting.setDisable(true);
+			    cancel.setDisable(true);
+			    cancel.setVisible(false);
 			}
 			
 		});
